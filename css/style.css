@@ -1,0 +1,300 @@
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Cafe24ClassicType';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Cafe24ClassicType-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* 배경 이미지를 화면 전체로 꽉 채우기 */
+:root {
+  --space: 7px;       /* 균일한 간격 값 (조금 줄였습니다) */
+  --folder-width: 150px; /* 각 폴더 칸 너비 */
+  --icon-size: 100px;  /* 폴더 아이콘 크기 */
+  --container-left: 30px; /* 컨테이너 왼쪽 여백 */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bg {
+  position: fixed; /* 화면에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* 다른 컨텐트가 위에 보이도록 */
+}
+
+/* 비디오 꽉 채우기 */
+.bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 핵심 */
+}
+
+.bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.section1, .section2, .section3 {
+  position: relative;
+  z-index: 1; /* 배경(.bg)보다 위에 표시 */
+  padding: 20px;
+} 
+
+.folder {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.folder img {
+  width: 150px; /* 원하는 크기로 조정 */
+  height: auto;
+  display: block;
+  /* object-fit: contain; */
+}
+
+.folder-name {
+  font-family: 'Paperozi', sans-serif;
+  color: #fff;
+  display: inline-flex; /* 텍스트와 원을 가로로 정렬 */
+  align-items: center;
+  font-size: 14px;
+  text-align: center;
+}
+
+.folder-name::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  /* 무지개색 라벨: conic-gradient 사용 */
+  background: conic-gradient(red, orange, yellow, green, blue, indigo, violet);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px; /* 간격을 넓게 조정 */
+} 
+
+/* 가로 배치를 위한 래퍼: 한 줄로 쭉 나열 */
+.folder-row {
+  display: flex;
+  flex-wrap: nowrap; /* 한 줄 고정 */
+  gap: var(--space); /* 모든 칸 간격을 변수로 제어 */
+  justify-content: center; /* 왼쪽부터 나열 */
+  align-items: center; /* 세로 중앙 정렬 */
+  padding: var(--space); /* 컨테이너 패딩도 동일값으로 설정 */
+  position: relative;
+  z-index: 1; /* 배경 위에 표시 */
+  width: 100%;
+  overflow-x: auto; /* 작은 화면에서 가로 스크롤 가능 */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  margin: 0 auto;
+}
+
+/* 각 섹션(폴더 칸)을 고정 너비로 설정: 모든 아이템 동일 너비 */
+.folder-row > section {
+  flex: 0 0 var(--folder-width);
+  max-width: var(--folder-width);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+/* 각 섹션(폴더 칸) 기본 스타일 */
+.section1, .section2, .section3 {
+  display: block;
+  width: auto;
+}
+
+/* Mac-like window bar */
+.window-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px var(--container-left);
+  height:44px;
+  position:relative;
+  z-index:2;
+}
+.window-controls{display:flex;gap:calc(var(--space)/2);align-items:center}
+.window-controls .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.window-controls .dot.red{background:#ff5f56}
+.window-controls .dot.yellow{background:#ffbd2e}
+.window-controls .dot.green{background:#27c93f}
+.close{text-decoration:none;color:#333;font-size:20px}
+.close .close-icon{font-style:normal;font-size:20px;line-height:1;display:inline-block;padding:4px;border-radius:4px}
+.close:hover .close-icon{background:rgba(0,0,0,0.05)}
+
+/* Info grid: two columns, responsive pairs */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:24px;
+  margin-top:24px;
+}
+.info-item{
+  background:#fff;
+  padding:16px;
+  border-radius:8px;
+  box-shadow:0 1px 2px rgba(0,0,0,0.04);
+}
+.info-item h2{ margin:0 0 8px 0; font-size:1rem; }
+.info-item p{ margin:0; font-weight:300; color:#333; line-height:1.5; }
+
+@media (max-width:800px){
+  .info-grid{ grid-template-columns: 1fr; }
+}
+
+/* Subheading label (작은 동그라미 라벨) */
+.theme{
+  background-color: greenyellow;
+  border-radius: 30px;
+}
+
+/* Portfolio cards */
+.portfolio{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:24px;
+  margin-top:24px;
+}
+.card{
+  background:#fff;
+  padding:16px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:8px;
+}
+.card h6{ margin:8px 0 0; font-size:1.05rem; }
+.card .date, .card .tags{ color:#666; font-size:0.9rem; margin:4px 0; }
+.card .desc{ color:#444; font-size:0.95rem; margin-top:8px; }
+.buttons{ margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
+.buttons a{ text-decoration:none; padding:8px 12px; border-radius:8px; background:#fff; border:1px solid #e6e6e6; color:#333; font-weight:500; }
+.buttons a:hover{ box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+@media (max-width:600px){ .card img{ height:140px; } }
+
+/* Video styles */
+.page-bg video{ width:100%; max-width:100%; height:auto; border-radius:8px; display:block; margin:12px 0 24px; }
+
+
+/* 페이지 배경 (새 창 전용) */
+.page-bg{
+  background: #EBEAE5;
+  min-height: 100vh;
+}
+
+.color{
+  background-color: greenyellow;
+  width: fit-content;
+  border-radius: 5px;
+}
+.color2{
+    background-color: #a5ddff;
+    width: fit-content;
+    border-radius: 30px;
+}
+
+.newspaper{
+  position:absolute;
+  top: 3%;
+  left:50%;
+  transform:translateX(-50%);
+  color:#737373;
+  font-size:1.2rem;
+  font-family: 'Cafe24ClassicType';
+  letter-spacing:2px;
+}
+
+.title{
+  font-family: 'Paperozi', sans-serif;
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

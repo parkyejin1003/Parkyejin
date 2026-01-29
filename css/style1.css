@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+h2{
+    font-family: 'Paperozi';
+    font-size: 3rem;
+    text-align: center;
+    color: #ff4d00;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none; 
+}
+h1{
+    font-family: 'SchoolSafetyNotification';
+    font-size: 8rem;
+    text-align: center;
+    color: #ff4d00;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none; 
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 전체 배경 */
+.BG {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 링크도 전체 화면 */
+.BG a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 비디오 풀스크린 */
+.BG video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 비율 유지 + 꽉 채움 */
+}
+
+.BG > a > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 요소를 가득 채우며 잘림 처리 */
+    object-position: center center;
+    z-index: 1;
+}
